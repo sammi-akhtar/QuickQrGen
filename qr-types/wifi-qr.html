@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free WiFi QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free WiFi QR codes online. Generate scannable QR codes for WiFi networks with SSID, password, and encryption type. No watermark or signup required.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold text-indigo-600">QuickQRGen</h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-indigo-600">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-indigo-600">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-indigo-600">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-indigo-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free WiFi QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create scannable QR codes for WiFi networks</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter WiFi Network Details</h2>
+
+                <form id="qr-form">
+                    <div class="mb-6">
+                        <label for="wifi-ssid" class="block text-sm font-medium text-gray-700 mb-2">Network Name (SSID)</label>
+                        <input type="text" id="wifi-ssid" name="wifi-ssid"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="MyWiFiNetwork" required>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="wifi-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <input type="password" id="wifi-password" name="wifi-password"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="Enter WiFi password">
+                        <p class="text-sm text-gray-500 mt-2">Leave empty for open networks</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="wifi-encryption" class="block text-sm font-medium text-gray-700 mb-2">Encryption Type</label>
+                        <select id="wifi-encryption" name="wifi-encryption"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="WPA">WPA/WPA2 (Recommended)</option>
+                            <option value="WEP">WEP</option>
+                            <option value="nopass">No Password</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="My WiFi QR">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 transition-colors">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your WiFi QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">WiFi QR Codes: The Complete Guide</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">WiFi QR codes are revolutionizing the way we share internet access. Instead of manually typing complex passwords, users can simply scan a QR code to connect to your WiFi network instantly. This is particularly useful for businesses, hotels, cafes, and home users who want to provide easy guest access.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use WiFi QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Instant Connection:</strong> Guests can connect to your WiFi with a single scan</li>
+                        <li><strong>No Password Sharing:</strong> Eliminate the need to verbally share or write down passwords</li>
+                        <li><strong>Business Convenience:</strong> Perfect for hotels, restaurants, co-working spaces, and offices</li>
+                        <li><strong>Home Use:</strong> Great for sharing WiFi with visitors without revealing your password</li>
+                        <li><strong>Event Networking:</strong> Provide easy WiFi access at conferences and events</li>
+                        <li><strong>Security:</strong> No need to display passwords publicly</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How WiFi QR Codes Work</h3>
+
+                    <p class="mb-4">WiFi QR codes contain all the necessary information for a device to connect to a wireless network:</p>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-1">
+                        <li><strong>SSID:</strong> The name of your WiFi network</li>
+                        <li><strong>Password:</strong> The network password (if applicable)</li>
+                        <li><strong>Encryption Type:</strong> The security protocol (WPA, WEP, etc.)</li>
+                    </ul>
+
+                    <p class="mb-4">When scanned, the device automatically detects this information and connects to the network without manual input.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for WiFi QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Strategic Placement</h4>
+                            <p class="text-gray-600">Place QR codes where guests naturally look for WiFi information - reception desks, restaurant tables, or near entry points.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. Clear Instructions</h4>
+                            <p class="text-gray-600">Include simple instructions like "Scan to connect to our WiFi" near the QR code.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Size and Visibility</h4>
+                            <p class="text-gray-600">Ensure the QR code is large enough (at least 2x2 inches) and placed in well-lit areas for easy scanning.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Network Security</h4>
+                            <p class="text-gray-600">For business use, consider creating a separate guest network for QR code access to maintain security.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Regular Updates</h4>
+                            <p class="text-gray-600">If you change your WiFi password, remember to generate and update your QR codes.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">WiFi QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏨 Hospitality Industry</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Hotel lobbies and guest rooms</li>
+                                <li>Restaurant tables and menus</li>
+                                <li>Cafe and coffee shop seating</li>
+                                <li>Airport lounges and waiting areas</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏢 Business & Office</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Reception areas for visitors</li>
+                                <li>Meeting and conference rooms</li>
+                                <li>Co-working spaces</li>
+                                <li>Retail stores for customer use</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏠 Home & Personal</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Guest access for visitors</li>
+                                <li>House parties and gatherings</li>
+                                <li>Rental properties and Airbnb</li>
+                                <li>Family and friends sharing</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🎉 Events & Conferences</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Conference venues</li>
+                                <li>Trade shows and exhibitions</li>
+                                <li>Wedding receptions</li>
+                                <li>Workshops and seminars</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How do WiFi QR codes work?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">WiFi QR codes contain encoded information about your wireless network including the SSID (network name), password, and encryption type. When scanned by a smartphone, the device automatically detects this information and connects to the network without requiring manual entry of the password.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Are WiFi QR codes secure?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, WiFi QR codes are secure. They only contain the same information you would normally share with guests. The QR code itself doesn't store any additional data or compromise your network security. For enhanced security in business environments, consider using a separate guest network for QR code access.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I use a WiFi QR code for multiple networks?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">No, each WiFi QR code is specific to one network. If you have multiple networks (e.g., 2.4GHz and 5GHz), you'll need to create separate QR codes for each. However, most modern devices will automatically connect to the best available network if they share the same SSID.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">What if I change my WiFi password?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">If you change your WiFi password, you'll need to generate a new QR code with the updated credentials. The old QR code will no longer work as it contains the previous password information.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">🚀 Ready to Create Your WiFi QR Code?</h3>
+                        <p class="text-indigo-700 mb-4">Start by entering your WiFi network details above and customize your QR code design. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const ssid = document.getElementById('wifi-ssid').value.trim();
+                    const password = document.getElementById('wifi-password').value;
+                    const encryption = document.getElementById('wifi-encryption').value;
+
+                    if (!ssid) {
+                        alert('Please enter the WiFi network name (SSID)');
+                        return;
+                    }
+
+                    // Create WiFi QR code data
+                    let wifiData;
+                    if (encryption === 'nopass') {
+                        wifiData = `WIFI:S:${ssid};T:nopass;`;
+                    } else {
+                        if (!password) {
+                            alert('Please enter the WiFi password');
+                            return;
+                        }
+                        wifiData = `WIFI:S:${ssid};T:${encryption};P:${password};`;
+                    }
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'wifi',
+                        content: wifiData,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(wifiData);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

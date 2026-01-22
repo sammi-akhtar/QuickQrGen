@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Text QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free text QR codes online. Generate scannable QR codes for any text content without watermark or signup. Instant download in SVG/PNG format.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold text-indigo-600">QuickQRGen</h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-indigo-600">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-indigo-600">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-indigo-600">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-indigo-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free Text QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create scannable QR codes for any text content</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter Your Text</h2>
+
+                <form id="qr-form">
+                    <div class="mb-6">
+                        <label for="text-content" class="block text-sm font-medium text-gray-700 mb-2">Text Content</label>
+                        <textarea id="text-content" name="text-content"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                  rows="6" placeholder="Enter any text to encode in QR code" required></textarea>
+                        <p class="text-sm text-gray-500 mt-2">Enter any text, URL, or information you want to encode</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="My Text QR">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700 transition-colors">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your Text QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Text QR Codes: The Complete Guide</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">Text QR codes are the most versatile type of QR codes. They allow you to encode any text information into a scannable format, making it easy to share contact details, messages, instructions, or any other textual data with just a quick scan from a smartphone.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use Text QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Universal Compatibility:</strong> Works with any QR code scanner</li>
+                        <li><strong>Information Sharing:</strong> Perfect for sharing contact details, messages, or instructions</li>
+                        <li><strong>Marketing Materials:</strong> Add to business cards, flyers, posters, and product packaging</li>
+                        <li><strong>Event Information:</strong> Share event details, schedules, or directions</li>
+                        <li><strong>Educational Use:</strong> Provide additional information, references, or resources</li>
+                        <li><strong>Personal Use:</strong> Share WiFi passwords, contact info, or personal messages</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How Text QR Codes Work</h3>
+
+                    <p class="mb-4">Text QR codes encode plain text information that can be scanned and displayed on any smartphone. When scanned, the device shows the encoded text, which can be:</p>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-1">
+                        <li>Contact information</li>
+                        <li>Short messages or notes</li>
+                        <li>Instructions or guidelines</li>
+                        <li>Product information</li>
+                        <li>Event details</li>
+                        <li>Any other textual content</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for Text QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Keep It Concise</h4>
+                            <p class="text-gray-600">While QR codes can hold a lot of text, shorter messages are easier to scan and less prone to errors.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. Clear Formatting</h4>
+                            <p class="text-gray-600">Use proper formatting and structure to make the scanned text easy to read and understand.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Strategic Placement</h4>
+                            <p class="text-gray-600">Place QR codes where they're easily scannable and provide context about what users will see.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Size Matters</h4>
+                            <p class="text-gray-600">Ensure the QR code is large enough (at least 1 inch or 2.5 cm) for easy scanning from various distances.</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Test Before Printing</h4>
+                            <p class="text-gray-600">Always test your QR code with multiple devices before finalizing your design or printing materials.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Text QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏢 Business & Professional</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Contact information on business cards</li>
+                                <li>Product specifications and details</li>
+                                <li>Instruction manuals and guides</li>
+                                <li>Meeting notes and agendas</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🎉 Events & Marketing</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Event details and schedules</li>
+                                <li>Promotional messages and offers</li>
+                                <li>Contest rules and information</li>
+                                <li>Feedback and survey forms</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">📚 Education & Information</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Study notes and references</li>
+                                <li>Book recommendations and reviews</li>
+                                <li>Museum exhibit information</li>
+                                <li>Library resource guides</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏠 Personal & Home</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>WiFi network credentials</li>
+                                <li>Emergency contact information</li>
+                                <li>House rules for guests</li>
+                                <li>Personal messages and notes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">What is a Text QR Code?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">A Text QR Code is a scannable barcode that contains plain text information. When scanned with a smartphone camera, it displays the encoded text on the user's device. This is one of the most versatile QR code types as it can contain any textual information you want to share.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How much text can a QR code hold?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">The amount of text a QR code can hold depends on the error correction level and QR code version. Our generator supports up to approximately 2,953 characters with low error correction, or about 1,663 characters with high error correction. For best results, we recommend keeping text under 1,000 characters for optimal scanning reliability.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I include special characters in my text QR code?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, you can include most special characters, symbols, and even emojis in your text QR codes. Our generator supports UTF-8 encoding, which includes a wide range of characters from different languages and symbol sets. However, very complex or rare characters might affect scanning reliability.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">What's the difference between Text QR and other QR types?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Text QR codes are the most basic and versatile type. While other QR types (like Website, WiFi, or vCard) have specific formats and purposes, Text QR codes can contain any information in plain text format. This makes them ideal when you need to share information that doesn't fit into specialized QR code formats.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-indigo-800 mb-3">🚀 Ready to Create Your Text QR Code?</h3>
+                        <p class="text-indigo-700 mb-4">Start by entering your text content above and customize your QR code design. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const textContent = document.getElementById('text-content').value.trim();
+
+                    if (!textContent) {
+                        alert('Please enter some text content');
+                        return;
+                    }
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'text',
+                        content: textContent,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(textContent);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

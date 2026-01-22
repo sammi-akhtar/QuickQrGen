@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Coupon QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free coupon QR codes online. Generate promotional offers and discount QR codes. Instant download in SVG/PNG format.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold">
+                            <span class="text-red-600">Quick</span><span class="text-green-600">QRGen</span>
+                        </h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-green-400 transition-colors">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-green-400 transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-green-400 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free Coupon QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create scannable QR codes for promotional offers and discounts</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter Coupon Details</h2>
+
+                <form id="qr-form">
+                    <!-- Coupon Information -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Coupon Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="coupon-code" class="block text-sm font-medium text-gray-700 mb-1">Coupon Code</label>
+                                <input type="text" id="coupon-code" name="coupon-code"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                       placeholder="SUMMER2024" required>
+                                <p class="text-sm text-gray-500 mt-2">Unique code customers will enter</p>
+                            </div>
+                            <div>
+                                <label for="discount-type" class="block text-sm font-medium text-gray-700 mb-1">Discount Type</label>
+                                <select id="discount-type" name="discount-type"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                    <option value="percentage">Percentage (%)</option>
+                                    <option value="fixed">Fixed Amount ($)</option>
+                                    <option value="free-shipping">Free Shipping</option>
+                                    <option value="buy-one-get-one">Buy One Get One</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="discount-value" class="block text-sm font-medium text-gray-700 mb-1">Discount Value</label>
+                                <input type="number" id="discount-value" name="discount-value" min="0" step="0.01"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                       placeholder="25">
+                                <p class="text-sm text-gray-500 mt-2">Enter percentage or dollar amount</p>
+                            </div>
+                            <div>
+                                <label for="expiry-date" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                <input type="date" id="expiry-date" name="expiry-date"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                <p class="text-sm text-gray-500 mt-2">When the coupon expires</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Offer Details -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Offer Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="md:col-span-2">
+                                <label for="offer-title" class="block text-sm font-medium text-gray-700 mb-1">Offer Title</label>
+                                <input type="text" id="offer-title" name="offer-title"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                       placeholder="25% Off Summer Sale" required>
+                                <p class="text-sm text-gray-500 mt-2">Brief description of the offer</p>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="offer-description" class="block text-sm font-medium text-gray-700 mb-1">Offer Description</label>
+                                <textarea id="offer-description" name="offer-description" rows="3"
+                                          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                          placeholder="Get 25% off on all summer items. Valid on clothing, accessories, and home goods."></textarea>
+                                <p class="text-sm text-gray-500 mt-2">Detailed terms and conditions</p>
+                            </div>
+                            <div>
+                                <label for="minimum-purchase" class="block text-sm font-medium text-gray-700 mb-1">Minimum Purchase ($)</label>
+                                <input type="number" id="minimum-purchase" name="minimum-purchase" min="0" step="0.01"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                       placeholder="50">
+                                <p class="text-sm text-gray-500 mt-2">Minimum order value (optional)</p>
+                            </div>
+                            <div>
+                                <label for="usage-limit" class="block text-sm font-medium text-gray-700 mb-1">Usage Limit</label>
+                                <input type="number" id="usage-limit" name="usage-limit" min="1"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                       placeholder="1000">
+                                <p class="text-sm text-gray-500 mt-2">Maximum number of uses (optional)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="Summer Sale Coupon">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors shadow-sm hover:shadow-md">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your Coupon QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Coupon QR Codes: Drive Sales with Digital Promotions</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">Coupon QR codes combine the power of QR technology with promotional offers to create interactive discount campaigns. When scanned, customers can instantly access exclusive deals, special pricing, and limited-time offers.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use Coupon QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Instant Redemption:</strong> Customers can access offers with just one scan</li>
+                        <li><strong>Trackable Promotions:</strong> Monitor coupon usage and campaign performance</li>
+                        <li><strong>Flexible Discounts:</strong> Percentage off, fixed amount, free shipping, BOGO deals</li>
+                        <li><strong>Expiry Control:</strong> Set expiration dates to create urgency</li>
+                        <li><strong>Usage Limits:</strong> Control redemption volume and prevent abuse</li>
+                        <li><strong>Targeted Marketing:</strong> Place QR coupons in specific locations or customer segments</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How Coupon QR Codes Work</h3>
+
+                    <p class="mb-4">Coupon QR codes contain structured data about promotional offers. When scanned:</p>
+
+                    <ol class="list-decimal pl-6 mb-4 space-y-1">
+                        <li>The QR code contains coupon details (code, discount, expiry, terms)</li>
+                        <li>Scanning displays the coupon information</li>
+                        <li>Customers can copy the coupon code or save the offer</li>
+                        <li>Coupon codes can be entered at checkout for automatic discounts</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for Coupon QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Clear Terms and Conditions</h4>
+                            <p class="text-gray-600">Always include clear expiry dates, usage limits, and redemption instructions</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. Compelling Offers</h4>
+                            <p class="text-gray-600">Create valuable discounts that motivate customers to take action</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Strategic Placement</h4>
+                            <p class="text-gray-600">Place QR coupons in high-traffic areas, receipts, packaging, and marketing materials</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Mobile Optimization</h4>
+                            <p class="text-gray-600">Ensure coupon details display properly on mobile devices</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Track Performance</h4>
+                            <p class="text-gray-600">Monitor redemption rates and adjust campaigns based on performance data</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Coupon QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏪 Retail & E-commerce</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Seasonal sales and promotions</li>
+                                <li>Loyalty program rewards</li>
+                                <li>Abandoned cart recovery</li>
+                                <li>First-time buyer discounts</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🍽️ Restaurants & Food</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Happy hour specials</li>
+                                <li>Loyalty dining rewards</li>
+                                <li>Takeout and delivery discounts</li>
+                                <li>Group dining offers</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">💼 Services & Professional</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Consultation discounts</li>
+                                <li>Service package deals</li>
+                                <li>Referral program rewards</li>
+                                <li>Seasonal service promotions</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🎯 Marketing & Events</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Event ticket discounts</li>
+                                <li>Product launch promotions</li>
+                                <li>Brand awareness campaigns</li>
+                                <li>Customer acquisition offers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How do customers redeem coupon QR codes?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Customers scan the QR code to view coupon details, then enter the coupon code at checkout or show the coupon details to staff for redemption.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I set expiration dates for coupons?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, you can set specific expiry dates to create urgency and control the duration of your promotional campaigns.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How do I track coupon usage?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Track usage through your e-commerce platform, POS system, or by monitoring unique coupon codes entered during checkout.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I limit coupon usage?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, you can set usage limits per customer, total redemption limits, and restrict coupons to specific products or categories.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-green-800 mb-3">🚀 Ready to Create Your Coupon QR Code?</h3>
+                        <p class="text-green-700 mb-4">Set up promotional offers and discounts that customers can access instantly. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const couponCode = document.getElementById('coupon-code').value.trim();
+                    const discountType = document.getElementById('discount-type').value;
+                    const discountValue = document.getElementById('discount-value').value;
+                    const expiryDate = document.getElementById('expiry-date').value;
+                    const offerTitle = document.getElementById('offer-title').value.trim();
+                    const offerDescription = document.getElementById('offer-description').value.trim();
+                    const minimumPurchase = document.getElementById('minimum-purchase').value;
+                    const usageLimit = document.getElementById('usage-limit').value;
+
+                    // Basic validation
+                    if (!couponCode) {
+                        alert('Please enter a coupon code');
+                        return;
+                    }
+                    if (!offerTitle) {
+                        alert('Please enter an offer title');
+                        return;
+                    }
+                    if (!discountValue && discountType !== 'free-shipping' && discountType !== 'buy-one-get-one') {
+                        alert('Please enter a discount value');
+                        return;
+                    }
+
+                    // Create coupon data
+                    const couponData = {
+                        code: couponCode,
+                        type: discountType,
+                        value: discountValue,
+                        expiry: expiryDate,
+                        title: offerTitle,
+                        description: offerDescription,
+                        minPurchase: minimumPurchase,
+                        usageLimit: usageLimit
+                    };
+
+                    // Convert to text format for QR code
+                    let couponText = `COUPON: ${offerTitle}\n`;
+                    couponText += `Code: ${couponCode}\n`;
+
+                    if (discountType === 'percentage') {
+                        couponText += `Discount: ${discountValue}% off\n`;
+                    } else if (discountType === 'fixed') {
+                        couponText += `Discount: $${discountValue} off\n`;
+                    } else if (discountType === 'free-shipping') {
+                        couponText += `Free Shipping\n`;
+                    } else if (discountType === 'buy-one-get-one') {
+                        couponText += `Buy One Get One Free\n`;
+                    }
+
+                    if (minimumPurchase) {
+                        couponText += `Minimum Purchase: $${minimumPurchase}\n`;
+                    }
+                    if (expiryDate) {
+                        couponText += `Expires: ${new Date(expiryDate).toLocaleDateString()}\n`;
+                    }
+                    if (usageLimit) {
+                        couponText += `Usage Limit: ${usageLimit} uses\n`;
+                    }
+                    if (offerDescription) {
+                        couponText += `\n${offerDescription}\n`;
+                    }
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'coupon',
+                        content: couponText,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(couponText);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

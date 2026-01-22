@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Image QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free image QR codes online. Generate scannable QR codes for images and photos. Instant download in SVG/PNG format.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold">
+                            <span class="text-red-600">Quick</span><span class="text-green-600">QRGen</span>
+                        </h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-green-400 transition-colors">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-green-400 transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-green-400 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free Image QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create scannable QR codes for images and photos</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter Image URL</h2>
+
+                <form id="qr-form">
+                    <div class="mb-6">
+                        <label for="image-url" class="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
+                        <input type="url" id="image-url" name="image-url"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="https://example.com/image.jpg" required>
+                        <p class="text-sm text-gray-500 mt-2">Enter the direct URL to your image file</p>
+                        <p class="text-xs text-orange-600 mt-1">⚠️ Only URL links to images are supported. File uploads are not available.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="image-title" class="block text-sm font-medium text-gray-700 mb-2">Image Title (Optional)</label>
+                        <input type="text" id="image-title" name="image-title"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="Beautiful Landscape Photo">
+                        <p class="text-sm text-gray-500 mt-2">Help users identify your image content</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="My Image QR">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors shadow-sm hover:shadow-md">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your Image QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Image QR Codes: Share Visual Content Instantly</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">Image QR codes provide instant access to photos, artwork, graphics, and visual content. When scanned, users can immediately view your images in their browser or device gallery.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use Image QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Instant Image Access:</strong> Direct links to photos, artwork, and graphics</li>
+                        <li><strong>Portfolio Sharing:</strong> Showcase photography, art, and design work</li>
+                        <li><strong>Product Images:</strong> High-resolution product photos and details</li>
+                        <li><strong>Event Photography:</strong> Share event photos and memories</li>
+                        <li><strong>Visual Content:</strong> Charts, diagrams, infographics, and illustrations</li>
+                        <li><strong>Before/After Images:</strong> Comparisons and transformations</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How Image QR Codes Work</h3>
+
+                    <p class="mb-4">Image QR codes contain direct links to image files hosted online. When scanned:</p>
+
+                    <ol class="list-decimal pl-6 mb-4 space-y-1">
+                        <li>The QR code contains the image file URL</li>
+                        <li>Scanning opens the image in the device's browser or image viewer</li>
+                        <li>Users can view, zoom, and save the image</li>
+                        <li>Works with JPG, PNG, GIF, WebP, and other image formats</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for Image QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Use Direct Image URLs</h4>
+                            <p class="text-gray-600">Ensure the image URL ends with the file extension (.jpg, .png, etc.)</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. Optimize File Size</h4>
+                            <p class="text-gray-600">Keep images under 5MB for better mobile loading performance</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Use Web-Friendly Formats</h4>
+                            <p class="text-gray-600">JPG for photos, PNG for graphics with transparency, WebP for modern browsers</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Add Descriptive Titles</h4>
+                            <p class="text-gray-600">Include clear titles and alt text for better user experience</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Test Loading Speed</h4>
+                            <p class="text-gray-600">Verify images load quickly on different devices and connections</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Image QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">📸 Photography & Art</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Portfolio and gallery images</li>
+                                <li>Artwork and illustrations</li>
+                                <li>Photography collections</li>
+                                <li>Design mockups and concepts</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏢 Business & Marketing</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Product photography</li>
+                                <li>Company logos and branding</li>
+                                <li>Marketing materials and flyers</li>
+                                <li>Event posters and banners</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏠 Real Estate & Property</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Property photos and tours</li>
+                                <li>Floor plans and layouts</li>
+                                <li>Before/after renovation images</li>
+                                <li>Virtual staging photos</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">📊 Data & Information</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Charts and graphs</li>
+                                <li>Infographics and diagrams</li>
+                                <li>Maps and location images</li>
+                                <li>Technical drawings and blueprints</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">What image formats are supported?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">JPG, PNG, GIF, WebP, and BMP formats work on most devices. Modern browsers support additional formats like AVIF and HEIC.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I upload images directly?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">No, this service only supports image URLs. You need to host your images online and provide the direct URL.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Will images display immediately?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Images will open in the device's browser or image viewer. Loading speed depends on image size and internet connection.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can users save or download the images?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, most browsers and image viewers allow users to save, download, or share the images after viewing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-green-800 mb-3">🚀 Ready to Create Your Image QR Code?</h3>
+                        <p class="text-green-700 mb-4">Enter your image URL above to create a QR code that links directly to your photo or graphic. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const imageUrl = document.getElementById('image-url').value.trim();
+
+                    if (!imageUrl) {
+                        alert('Please enter an image URL');
+                        return;
+                    }
+
+                    // Basic URL validation
+                    try {
+                        new URL(imageUrl);
+                    } catch (e) {
+                        alert('Please enter a valid URL');
+                        return;
+                    }
+
+                    // Check for common image file extensions
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp', '.svg', '.tiff', '.ico'];
+                    const hasImageExtension = imageExtensions.some(ext => imageUrl.toLowerCase().endsWith(ext));
+
+                    if (!hasImageExtension) {
+                        // Allow the URL anyway but show a warning
+                        console.warn('URL does not appear to be an image file. Supported formats: JPG, PNG, GIF, WebP, BMP, SVG, TIFF, ICO');
+                    }
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'image',
+                        content: imageUrl,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(imageUrl);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

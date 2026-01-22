@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free PDF QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free PDF QR codes online. Generate scannable QR codes for PDF documents and files. Instant download in SVG/PNG format.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold">
+                            <span class="text-red-600">Quick</span><span class="text-green-600">QRGen</span>
+                        </h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-green-400 transition-colors">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-green-400 transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-green-400 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free PDF QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create scannable QR codes for PDF documents (URL only)</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter PDF URL</h2>
+
+                <form id="qr-form">
+                    <div class="mb-6">
+                        <label for="pdf-url" class="block text-sm font-medium text-gray-700 mb-2">PDF Document URL</label>
+                        <input type="url" id="pdf-url" name="pdf-url"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="https://example.com/document.pdf" required>
+                        <p class="text-sm text-gray-500 mt-2">Enter the direct URL to your PDF file</p>
+                        <p class="text-xs text-orange-600 mt-1">⚠️ Only URL links to PDFs are supported. File uploads are not available.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="My PDF QR">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors shadow-sm hover:shadow-md">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your PDF QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">PDF QR Codes: Share Documents Instantly</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">PDF QR codes provide instant access to PDF documents, manuals, brochures, and other digital files. When scanned, users can immediately view or download your PDF content.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use PDF QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Instant Document Access:</strong> Direct link to PDF files for immediate viewing</li>
+                        <li><strong>Professional Documentation:</strong> Share manuals, guides, and specifications</li>
+                        <li><strong>Marketing Materials:</strong> Link to brochures, catalogs, and presentations</li>
+                        <li><strong>Educational Content:</strong> Share study materials, tutorials, and resources</li>
+                        <li><strong>Legal Documents:</strong> Provide terms, policies, and agreements</li>
+                        <li><strong>Product Information:</strong> Detailed specs, instructions, and user guides</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How PDF QR Codes Work</h3>
+
+                    <p class="mb-4">PDF QR codes contain direct links to PDF files hosted online. When scanned:</p>
+
+                    <ol class="list-decimal pl-6 mb-4 space-y-1">
+                        <li>The QR code contains the PDF file URL</li>
+                        <li>Scanning opens the PDF in the device's browser or PDF viewer</li>
+                        <li>Users can view, download, or save the document</li>
+                        <li>Works with any PDF hosted on a publicly accessible URL</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for PDF QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Use Direct PDF URLs</h4>
+                            <p class="text-gray-600">Ensure the PDF URL ends with .pdf and is directly accessible</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. Optimize File Size</h4>
+                            <p class="text-gray-600">Keep PDFs under 10MB for better mobile loading performance</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Mobile-Friendly PDFs</h4>
+                            <p class="text-gray-600">Ensure PDFs are readable on mobile devices and tablets</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Clear File Names</h4>
+                            <p class="text-gray-600">Use descriptive PDF filenames that indicate the content</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Test Loading Speed</h4>
+                            <p class="text-gray-600">Test PDF loading times, especially on slower mobile connections</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">PDF QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏢 Business & Professional</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Product catalogs and brochures</li>
+                                <li>Company policies and procedures</li>
+                                <li>Service agreements and contracts</li>
+                                <li>Employee handbooks and guides</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">📚 Education & Training</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Course materials and syllabi</li>
+                                <li>Study guides and worksheets</li>
+                                <li>Research papers and articles</li>
+                                <li>Training manuals and certifications</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏥 Healthcare & Services</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Medical forms and instructions</li>
+                                <li>Patient education materials</li>
+                                <li>Insurance information and claims</li>
+                                <li>Prescription information</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🛠️ Technical & Manuals</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Product manuals and guides</li>
+                                <li>Installation instructions</li>
+                                <li>Safety data sheets</li>
+                                <li>Technical specifications</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can I upload PDF files directly?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">No, this service only supports PDF URLs. You need to host your PDF file online and provide the direct URL to it.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">What PDF hosting services can I use?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">You can use Google Drive, Dropbox, OneDrive, your own website, or any file hosting service that provides direct PDF links.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Will the PDF open on mobile devices?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, modern mobile devices have built-in PDF viewers or will open PDFs in the browser. Most users can view PDFs directly on their phones.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can users download the PDF after scanning?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, depending on how the PDF is hosted and the device/browser settings, users can typically download, save, or print the PDF.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-green-800 mb-3">🚀 Ready to Create Your PDF QR Code?</h3>
+                        <p class="text-green-700 mb-4">Enter your PDF URL above to create a QR code that links directly to your document. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const pdfUrl = document.getElementById('pdf-url').value.trim();
+
+                    if (!pdfUrl) {
+                        alert('Please enter a PDF URL');
+                        return;
+                    }
+
+                    // Basic URL validation
+                    try {
+                        const urlObj = new URL(pdfUrl);
+                        if (!pdfUrl.toLowerCase().endsWith('.pdf')) {
+                            alert('Please enter a valid PDF file URL (must end with .pdf)');
+                            return;
+                        }
+                    } catch (e) {
+                        alert('Please enter a valid URL');
+                        return;
+                    }
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'pdf',
+                        content: pdfUrl,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(pdfUrl);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

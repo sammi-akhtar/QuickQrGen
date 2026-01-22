@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Menu QR Code Generator – QuickQRGen</title>
+    <meta name="description" content="Create free menu QR codes online. Generate digital menus for restaurants and food services. Instant download in SVG/PNG format.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <h1 class="text-2xl font-bold">
+                            <span class="text-red-600">Quick</span><span class="text-green-600">QRGen</span>
+                        </h1>
+                        <span class="ml-2 text-sm text-gray-500">Free QR Code Generator Online</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-green-400 transition-colors">Home</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-green-400 transition-colors">About</a>
+                    <a href="../contact.html" class="text-gray-600 hover:text-green-400 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex justify-center space-x-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">1</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Select QR Type</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">2</div>
+                    <span class="mt-2 text-sm font-medium text-green-600">Add Content</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center font-bold">3</div>
+                    <span class="mt-2 text-sm font-medium text-gray-600">Design & Download</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Free Menu QR Code Generator</h1>
+            <p class="text-xl text-gray-600">Create digital menus that customers can access via QR code</p>
+        </div>
+
+        <!-- Content Input Section -->
+        <section id="step2">
+            <div class="bg-white rounded-lg shadow p-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Enter Menu Details</h2>
+
+                <form id="qr-form">
+                    <div class="mb-6">
+                        <label for="restaurant-name" class="block text-sm font-medium text-gray-700 mb-2">Restaurant Name</label>
+                        <input type="text" id="restaurant-name" name="restaurant-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="Bella Vista Restaurant" required>
+                        <p class="text-sm text-gray-500 mt-2">Your restaurant or business name</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="menu-url" class="block text-sm font-medium text-gray-700 mb-2">Menu URL</label>
+                        <input type="url" id="menu-url" name="menu-url"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="https://yourrestaurant.com/menu" required>
+                        <p class="text-sm text-gray-500 mt-2">Direct link to your digital menu</p>
+                        <p class="text-xs text-orange-600 mt-1">⚠️ Only URL links to menus are supported. File uploads are not available.</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="menu-description" class="block text-sm font-medium text-gray-700 mb-2">Menu Description (Optional)</label>
+                        <textarea id="menu-description" name="menu-description" rows="3"
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                                  placeholder="Explore our delicious selection of Italian cuisine, from classic pasta dishes to wood-fired pizzas."></textarea>
+                        <p class="text-sm text-gray-500 mt-2">Brief description of your menu offerings</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="qr-name" class="block text-sm font-medium text-gray-700 mb-2">QR Code Name (Optional)</label>
+                        <input type="text" id="qr-name" name="qr-name"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                               placeholder="Bella Vista Menu">
+                    </div>
+
+                    <button type="submit" id="next-to-design"
+                            class="w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors shadow-sm hover:shadow-md">
+                        Next: Design Your QR Code
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Design & Download Section (Hidden initially) -->
+        <section id="step3" class="hidden">
+            <div class="bg-white rounded-lg shadow p-8 max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Design & Download Your Menu QR Code</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                            <div id="qr-preview" class="w-full h-64 flex items-center justify-center bg-white rounded">
+                                <p class="text-gray-500">QR Code Preview</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">QR Color</label>
+                                <input type="color" id="qr-color" value="#000000" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 rounded border-gray-300">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Size (px)</label>
+                                <input type="range" id="qr-size" min="200" max="1000" value="400" class="w-full">
+                                <span id="size-value" class="text-sm text-gray-600">400px</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Logo (Optional)</label>
+                                <input type="file" id="qr-logo" accept="image/*" class="w-full border border-gray-300 rounded px-3 py-2">
+                                <p class="text-xs text-gray-500 mt-1">Upload a logo to embed in your QR code (client-side only)</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Format</label>
+                                <select id="qr-format" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="png">PNG (Recommended)</option>
+                                    <option value="svg">SVG (Vector – Print Ready)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Error Correction</label>
+                                <select id="error-correction" class="w-full border border-gray-300 rounded px-3 py-2">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="download-qr" class="mt-8 w-full bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition-colors">Download QR Code</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="mt-12 bg-white rounded-lg shadow p-8">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Digital Menu QR Codes: Contactless Dining Experience</h2>
+
+                <div class="prose prose-gray max-w-none">
+                    <p class="mb-4">Digital menu QR codes transform traditional paper menus into interactive, contactless dining experiences. Customers can scan codes at their tables to instantly access your menu, photos, prices, and ordering information.</p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Why Use Digital Menu QR Codes?</h3>
+
+                    <ul class="list-disc pl-6 mb-4 space-y-2">
+                        <li><strong>Contactless Experience:</strong> No physical menus to touch during dining</li>
+                        <li><strong>Always Up-to-Date:</strong> Instantly update prices, specials, and menu items</li>
+                        <li><strong>Rich Visual Experience:</strong> High-quality photos and detailed descriptions</li>
+                        <li><strong>Multi-language Support:</strong> Reach international customers with translations</li>
+                        <li><strong>Allergen Information:</strong> Detailed ingredient and allergen listings</li>
+                        <li><strong>Online Ordering:</strong> Direct links to ordering platforms and delivery services</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">How Digital Menu QR Codes Work</h3>
+
+                    <p class="mb-4">Digital menu QR codes link directly to your online menu. When scanned:</p>
+
+                    <ol class="list-decimal pl-6 mb-4 space-y-1">
+                        <li>The QR code contains your menu URL</li>
+                        <li>Scanning opens your digital menu in the customer's browser</li>
+                        <li>Customers can browse items, view photos, and read descriptions</li>
+                        <li>Optional integration with ordering systems and payment processing</li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Best Practices for Digital Menu QR Codes</h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-700">1. Mobile-First Design</h4>
+                            <p class="text-gray-600">Ensure your menu website is fully optimized for mobile devices</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">2. High-Quality Photos</h4>
+                            <p class="text-gray-600">Use professional food photography that makes dishes look appetizing</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">3. Clear Categories</h4>
+                            <p class="text-gray-600">Organize menu items into logical categories (appetizers, mains, desserts)</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">4. Dietary Information</h4>
+                            <p class="text-gray-600">Include allergen warnings, vegetarian/vegan options, and nutritional info</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium text-gray-700">5. Fast Loading</h4>
+                            <p class="text-gray-600">Optimize images and code for quick loading on mobile networks</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Digital Menu QR Code Use Cases</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🍽️ Restaurants & Dining</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Fine dining establishments</li>
+                                <li>Casual dining restaurants</li>
+                                <li>Quick service restaurants</li>
+                                <li>Cafes and coffee shops</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🍸 Bars & Lounges</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Cocktail menus and specials</li>
+                                <li>Wine and beer listings</li>
+                                <li>Happy hour promotions</li>
+                                <li>Signature drink recipes</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🏪 Food Services</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Catering companies</li>
+                                <li>Food trucks and carts</li>
+                                <li>Bakeries and dessert shops</li>
+                                <li>Deli and sandwich shops</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">🎉 Events & Catering</h4>
+                            <ul class="list-disc pl-6 space-y-1 text-gray-600">
+                                <li>Wedding reception menus</li>
+                                <li>Corporate event catering</li>
+                                <li>Private party menus</li>
+                                <li>Special occasion dining</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Frequently Asked Questions</h3>
+
+                    <div class="space-y-4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How do customers access the digital menu?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Customers simply scan the QR code with their phone's camera or QR scanner app, and it opens your menu website automatically.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Do I need a website for my menu?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Yes, you'll need a website or landing page that displays your menu. You can use free platforms like Google Sites, WordPress, or specialized menu websites.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">Can customers order directly from the menu?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">You can integrate ordering buttons that link to third-party services like Uber Eats, DoorDash, or your own ordering system for direct table service.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2" itemprop="name">How do I update my menu?</h4>
+                            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <p class="text-gray-600" itemprop="text">Update your menu website anytime - changes are instant and don't require reprinting QR codes. Customers always see the current menu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-green-800 mb-3">🚀 Ready to Create Your Digital Menu QR Code?</h3>
+                        <p class="text-green-700 mb-4">Transform your dining experience with contactless digital menus. It's completely free, no watermark, and no signup required!</p>
+                        <a href="#step2" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-20">
+        <!-- Main Footer Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Brand Section -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <h3 class="text-2xl font-bold">
+                            <span class="text-red-500">Quick</span><span class="text-green-500">QRGen</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Create unlimited QR codes online for free. No watermark, no signup, no limits.
+                        Generate website, WiFi, social, app and business QR codes instantly.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Social media icons removed per user request -->
+                    </div>
+                </div>
+
+                <!-- QR Types -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">QR Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/website-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Website URL</a></li>
+                        <li><a href="qr-types/text-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Text</a></li>
+                        <li><a href="qr-types/wifi-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WiFi</a></li>
+                        <li><a href="qr-types/whatsapp-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">WhatsApp</a></li>
+                        <li><a href="qr-types/instagram-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Instagram</a></li>
+                        <li><a href="qr-types/facebook-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+
+                <!-- More Types & Features -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">More Types</h4>
+                    <ul class="space-y-3">
+                        <li><a href="qr-types/vcard-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">vCard</a></li>
+                        <li><a href="qr-types/business-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Business</a></li>
+                        <li><a href="qr-types/pdf-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">PDF</a></li>
+                        <li><a href="qr-types/video-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Video</a></li>
+                        <li><a href="qr-types/menu-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Menu</a></li>
+                        <li><a href="qr-types/coupon-qr.html" class="text-gray-300 hover:text-green-400 transition-colors">Coupon</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Legal -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-green-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-green-400 transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-green-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-300 hover:text-green-400 transition-colors">Terms of Service</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2024 <span class="text-red-500 font-semibold">Quick</span><span class="text-green-500 font-semibold">QRGen</span>.
+                        All rights reserved. Made with ❤️ for the QR code community.
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>Free QR Code Generator</span>
+                        <span class="hidden md:inline">•</span>
+                        <span class="hidden md:inline">No Watermark • No Signup • No Limits</span>
+                    </div>
+                </div>
+
+                <!-- Ad Placement - Footer -->
+                <div id="ads-footer" class="mt-6 text-center"></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Generation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/ads.js"></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('qr-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const restaurantName = document.getElementById('restaurant-name').value.trim();
+                    const menuUrl = document.getElementById('menu-url').value.trim();
+                    const menuDescription = document.getElementById('menu-description').value.trim();
+
+                    // Basic validation
+                    if (!restaurantName) {
+                        alert('Please enter a restaurant name');
+                        return;
+                    }
+                    if (!menuUrl) {
+                        alert('Please enter a menu URL');
+                        return;
+                    }
+
+                    // Basic URL validation
+                    try {
+                        new URL(menuUrl);
+                    } catch (e) {
+                        alert('Please enter a valid menu URL');
+                        return;
+                    }
+
+                    // Create menu text for QR code
+                    let menuText = `🍽️ ${restaurantName} Menu\n\n`;
+                    menuText += `View our full menu: ${menuUrl}\n`;
+
+                    if (menuDescription) {
+                        menuText += `\n${menuDescription}\n`;
+                    }
+
+                    menuText += `\nScan to explore our delicious offerings!`;
+
+                    // Store the QR data and navigate to design step
+                    window.currentQRData = {
+                        type: 'menu',
+                        content: menuText,
+                        qrCode: null,
+                        qrStyling: null
+                    };
+
+                    // Show design step
+                    document.getElementById('step2').classList.add('hidden');
+                    document.getElementById('step3').classList.remove('hidden');
+
+                    // Update progress indicator
+                    updateProgressIndicator(3);
+
+                    // Initialize QR code generation
+                    if (window.QuickQRGen) {
+                        window.QuickQRGen.generateQRCode(menuText);
+                    }
+                });
+            }
+
+            // Update progress indicator function
+            function updateProgressIndicator(currentStep) {
+                const indicators = document.querySelectorAll('.flex.flex-col.items-center');
+
+                indicators.forEach((indicator, index) => {
+                    const stepNumber = index + 1;
+                    const circle = indicator.querySelector('.rounded-full');
+                    const text = indicator.querySelector('span');
+
+                    if (circle && text) {
+                        if (stepNumber === currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-green-600');
+                            circle.classList.add('bg-indigo-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-green-600');
+                            text.classList.add('text-indigo-600');
+                        } else if (stepNumber < currentStep) {
+                            circle.classList.remove('bg-gray-300', 'text-gray-600', 'bg-indigo-600');
+                            circle.classList.add('bg-green-600', 'text-white');
+                            text.classList.remove('text-gray-600', 'text-indigo-600');
+                            text.classList.add('text-green-600');
+                        } else {
+                            circle.classList.remove('bg-indigo-600', 'text-white', 'bg-green-600');
+                            circle.classList.add('bg-gray-300', 'text-gray-600');
+                            text.classList.remove('text-indigo-600', 'text-green-600');
+                            text.classList.add('text-gray-600');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
